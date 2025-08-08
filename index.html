@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analytext | Financial Textual Data Repository</title>
+    <meta name="description" content="Accelerate your financial and accounting research with Analytext's public repository of pre-parsed textual data from SEC filings (10-K, 10-Q), including MD&A, Risk Factors, and financial notes.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,6 +90,7 @@
                 <a href="#" class="nav-link text-slate-600 hover:text-blue-600" data-page="secFilings">SEC Data</a>
                 <a href="#" class="nav-link text-slate-600 hover:text-blue-600" data-page="financialNotes">Notes Data</a>
                 <a href="#" class="nav-link text-slate-600 hover:text-blue-600" data-page="accountingComplexity">Accounting Complexity</a>
+                <a href="#" class="nav-link text-slate-600 hover:text-blue-600" data-page="firmBenchmarking">Firm Benchmarking</a>
                 <a href="#" class="nav-link text-slate-600 hover:text-blue-600" data-page="about">About</a>
                 <a href="#" class="nav-link text-slate-600 hover:text-blue-600" data-page="contact">Contact</a>
             </nav>
@@ -105,6 +107,7 @@
             <a href="#" class="block nav-link-mobile text-slate-600 hover:text-blue-600 hover:bg-slate-50 py-2 px-4" data-page="secFilings">SEC Data</a>
             <a href="#" class="block nav-link-mobile text-slate-600 hover:text-blue-600 hover:bg-slate-50 py-2 px-4" data-page="financialNotes">Notes Data</a>
             <a href="#" class="block nav-link-mobile text-slate-600 hover:text-blue-600 hover:bg-slate-50 py-2 px-4" data-page="accountingComplexity">Accounting Complexity</a>
+            <a href="#" class="block nav-link-mobile text-slate-600 hover:text-blue-600 hover:bg-slate-50 py-2 px-4" data-page="firmBenchmarking">Firm Benchmarking</a>
             <a href="#" class="block nav-link-mobile text-slate-600 hover:text-blue-600 hover:bg-slate-50 py-2 px-4" data-page="about">About</a>
             <a href="#" class="block nav-link-mobile text-slate-600 hover:text-blue-600 hover:bg-slate-50 py-2 px-4" data-page="contact">Contact</a>
         </div>
@@ -114,7 +117,7 @@
         <main id="page-content" class="pt-16 pb-24">
 
             <!-- Home Page -->
-            <div id="home" class="page-content-item active" data-title="Analytext | Financial Textual Data Repository" data-description="A public repository of parsed textual data from SEC filings, including major sections and financial statement notes from 10-K and 10-Q reports, designed to accelerate business research.">
+            <div id="home" class="page-content-item active" data-title="Analytext | Free Financial Textual Data for AI & Research" data-description="Accelerate your financial and accounting research with Analytext's public repository of pre-parsed textual data from SEC filings (10-K, 10-Q), including MD&A, Risk Factors, and financial notes.">
                 <section class="text-center">
                      <div class="hero-bg rounded-2xl shadow-xl overflow-hidden mb-20 px-8 py-20">
                         <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">Unlock Insights from Financial Texts</h1>
@@ -173,7 +176,7 @@
             </div>
 
             <!-- SEC Filings Data Page -->
-            <div id="secFilings" class="page-content-item" data-title="SEC Filings Data | Analytext" data-description="Download pre-parsed textual data from major sections of 10-K and 10-Q reports, including MD&A, Risk Factors, and Business Description.">
+            <div id="secFilings" class="page-content-item" data-title="Download SEC Filings Data (10-K, 10-Q) | Analytext" data-description="Access and download research-ready textual data from major sections of 10-K and 10-Q reports. Get pre-parsed MD&A, Risk Factors, and Business Description sections from 2008 onwards.">
                 <h1 class="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">SEC Filings Sections Data</h1>
                 <p class="text-lg text-slate-600 mb-10 max-w-4xl">This dataset provides the raw textual data extracted from the major sections of annual (10-K) and quarterly (10-Q) SEC filings from 2008 onwards. We also provide pre-calculated metrics for each section.</p>
                 
@@ -222,7 +225,7 @@
             </div>
 
             <!-- Financial Notes Data Page -->
-            <div id="financialNotes" class="page-content-item" data-title="Financial Notes Data | Analytext" data-description="Download pre-parsed textual data from financial statement notes, extracted using XBRL data from 2009 onwards.">
+            <div id="financialNotes" class="page-content-item" data-title="Financial Statement Notes Data (XBRL) | Analytext" data-description="Download granular textual data from financial statement notes. Our dataset, extracted via XBRL and classified into 32 accounting topics, is ideal for detailed textual analysis.">
                 <h1 class="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">Financial Statement Notes Data</h1>
                 <p class="text-lg text-slate-600 mb-10 max-w-4xl">This dataset contains the text from financial statement notes, extracted using XBRL data from 2009 onwards. Footnotes provide essential, detailed explanations for the numbers in primary financial statements. We map notes to 32 distinct accounting topics.</p>
 
@@ -265,7 +268,7 @@
             </div>
             
             <!-- Accounting Complexity Page -->
-            <div id="accountingComplexity" class="page-content-item" data-title="Accounting Complexity Data | Analytext" data-description="Access validated measures of firm complexity based on Accounting Reporting Complexity (ARC) and other XBRL data from xbrlresearch.com.">
+            <div id="accountingComplexity" class="page-content-item" data-title="Accounting & Firm Complexity Data (ARC) | Analytext" data-description="Explore firm complexity with validated Accounting Reporting Complexity (ARC) measures. Access the complementary dataset and SAS code from xbrlresearch.com for robust analysis.">
                 <h1 class="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">Accounting Complexity Data</h1>
                 <p class="text-lg text-slate-600 mb-10 max-w-4xl">For researchers interested in firm complexity, the <a href="https://www.xbrlresearch.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">XBRL Research website</a> provides a valuable, complementary dataset. It offers extensively validated measures of firm complexity based on Accounting Reporting Complexity (ARC).</p>
 
@@ -286,8 +289,30 @@
                 </div>
             </div>
 
+            <!-- Firm Benchmarking Page -->
+            <div id="firmBenchmarking" class="page-content-item" data-title="Firm Benchmarking Data & Tools | Analytext" data-description="Benchmark your firm against peers using a wide range of financial and non-financial metrics. Access the interactive tools and datasets from firmbenchmarking.com.">
+                <h1 class="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">Firm Benchmarking Data</h1>
+                <p class="text-lg text-slate-600 mb-10 max-w-4xl">The <a href="https://www.firmbenchmarking.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Firm Benchmarking website</a> is another key resource, offering interactive tools to benchmark firms against their peers across hundreds of metrics.</p>
+
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Available Resources</h2>
+                    <ul class="list-disc list-inside space-y-3 text-slate-600">
+                        <li><strong>Interactive Benchmarking:</strong> Compare a firm to its industry peers on metrics related to financial performance, corporate governance, audit, and more.</li>
+                        <li><strong>Custom Peer Groups:</strong> Create your own peer groups for more tailored and relevant comparisons.</li>
+                        <li><strong>Data Downloads:</strong> Download the underlying data for your own offline analysis and research projects.</li>
+                        <li><strong>Wide Range of Metrics:</strong> Access a comprehensive library of over 200 financial and non-financial metrics.</li>
+                    </ul>
+
+                    <div class="mt-8">
+                         <a href="https://www.firmbenchmarking.com" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300 text-center">
+                            Visit firmbenchmarking.com &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <!-- About Page -->
-            <div id="about" class="page-content-item" data-title="About The Authors | Analytext" data-description="Learn more about the researchers behind the Analytext project: Mauricio Codesso, Rani Hoitash, and Udi Hoitash.">
+            <div id="about" class="page-content-item" data-title="About the Researchers | Analytext" data-description="Meet the team behind Analytext: Mauricio Codesso (Northeastern University), Rani Hoitash (Bentley University), and Udi Hoitash (Northeastern University), experts in finance, accounting, and data science.">
                 <h1 class="text-4xl font-extrabold text-slate-900 mb-4 text-center tracking-tight">About the Authors</h1>
                 <p class="text-lg text-slate-600 mb-16 max-w-3xl mx-auto text-center">This project is made possible by the dedicated work of a team of researchers passionate about advancing the field of financial analysis through accessible, high-quality data.</p>
                 
@@ -314,23 +339,23 @@
             </div>
             
             <!-- Contact Page -->
-            <div id="contact" class="page-content-item" data-title="Contact Us | Analytext" data-description="Contact the Analytext research team. Reach out to the authors directly or use the contact form for general inquiries.">
+            <div id="contact" class="page-content-item" data-title="Contact the Analytext Team" data-description="Get in touch with the Analytext researchers. We welcome questions, feedback, and collaboration inquiries. Contact us via the form or directly via email.">
                 <h1 class="text-4xl font-extrabold text-slate-900 mb-4 text-center tracking-tight">Get in Touch</h1>
                 <p class="text-lg text-slate-600 mb-16 max-w-3xl mx-auto text-center">Have questions or feedback? We'd love to hear from you. Reach out to the authors directly or use the contact form for general inquiries.</p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-                    <div class="bg-slate-300 p-8 rounded-xl shadow-lg">
+                    <div class="bg-slate-100 p-8 rounded-xl shadow-lg">
                         <h2 class="text-2xl font-bold text-slate-900 mb-6">Send us a Message</h2>
-                        <form id="contact-form">
+                        <form action="https://formspree.io/f/mjkopdpq" method="POST">
                             <div class="space-y-6">
                                 <div>
-                                    <label for="name" class="block text-sm font-medium text-slate-700">Full Name</label>
+                                    <label for="name" class="block text-sm font-medium text-slate-700">Full Name *</label>
                                     <div class="mt-1">
                                         <input type="text" name="name" id="name" required class="block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-3">
                                     </div>
                                 </div>
                                 <div>
-                                    <label for="email" class="block text-sm font-medium text-slate-700">Email Address</label>
+                                    <label for="email" class="block text-sm font-medium text-slate-700">Email Address *</label>
                                     <div class="mt-1">
                                         <input type="email" name="email" id="email" required class="block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-3">
                                     </div>
@@ -338,14 +363,11 @@
                                 <div>
                                     <label for="message" class="block text-sm font-medium text-slate-700">Message</label>
                                     <div class="mt-1">
-                                        <textarea rows="4" name="message" id="message" required class="block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-3"></textarea>
+                                        <textarea rows="4" name="message" id="message" class="block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-3"></textarea>
                                     </div>
                                 </div>
                                 <div>
-                                    <button type="submit" class="w-full justify-center rounded-md bg-blue-600 py-3 px-4 text-base font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Submit</button>
-                                </div>
-                                <div id="form-submission-message" class="mt-4 p-4 text-center bg-green-100 text-green-800 rounded-md">
-                                    Thank you! Your message has been sent.
+                                    <button type="submit" class="w-full justify-center rounded-md bg-blue-600 py-3 px-4 text-base font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Send Message</button>
                                 </div>
                             </div>
                         </form>
@@ -386,34 +408,39 @@
         <!-- Footer -->
         <footer class="border-t border-slate-200 pt-10 pb-12">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
-                    <div class="col-span-2 md:col-span-4 lg:col-span-2">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="col-span-1">
                         <a href="#" class="flex items-center space-x-3" data-page="home">
                             <div class="h-10 w-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">A</div>
                             <span class="text-2xl font-bold text-slate-800">Analytext</span>
                         </a>
                         <p class="text-slate-500 mt-4 text-base">Accelerating research with high-quality textual data.</p>
                     </div>
-                    <div>
-                        <h3 class="text-sm font-semibold text-slate-900 tracking-wider uppercase">Data</h3>
-                        <ul role="list" class="mt-4 space-y-4">
-                            <li><a href="#" data-page="secFilings" class="nav-link-button text-base text-slate-500 hover:text-blue-600">SEC Filings</a></li>
-                            <li><a href="#" data-page="financialNotes" class="nav-link-button text-base text-slate-500 hover:text-blue-600">Financial Notes</a></li>
-                        </ul>
-                    </div>
-                     <div>
-                        <h3 class="text-sm font-semibold text-slate-900 tracking-wider uppercase">Resources</h3>
-                        <ul role="list" class="mt-4 space-y-4">
-                             <li><a href="#" class="text-base text-slate-500 hover:text-blue-600">Python Code</a></li>
-                             <li><a href="#" data-page="accountingComplexity" class="nav-link-button text-base text-slate-500 hover:text-blue-600">Accounting Complexity</a></li>
-                        </ul>
-                    </div>
-                     <div>
-                        <h3 class="text-sm font-semibold text-slate-900 tracking-wider uppercase">Company</h3>
-                        <ul role="list" class="mt-4 space-y-4">
-                            <li><a href="#" data-page="about" class="nav-link-button text-base text-slate-500 hover:text-blue-600">About</a></li>
-                             <li><a href="#" data-page="contact" class="nav-link-button text-base text-slate-500 hover:text-blue-600">Contact Us</a></li>
-                        </ul>
+                    <div class="col-span-1 md:col-span-3">
+                        <div class="grid grid-cols-3 gap-8">
+                            <div>
+                                <h3 class="text-sm font-semibold text-slate-900 tracking-wider uppercase">Navigate</h3>
+                                <ul role="list" class="mt-4 space-y-4">
+                                    <li><a href="#" data-page="home" class="nav-link-button text-base text-slate-500 hover:text-blue-600">Home</a></li>
+                                    <li><a href="#" data-page="secFilings" class="nav-link-button text-base text-slate-500 hover:text-blue-600">SEC Data</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                 <h3 class="text-sm font-semibold text-slate-900 tracking-wider uppercase">Data</h3>
+                                <ul role="list" class="mt-4 space-y-4">
+                                     <li><a href="#" data-page="financialNotes" class="nav-link-button text-base text-slate-500 hover:text-blue-600">Notes Data</a></li>
+                                     <li><a href="#" data-page="accountingComplexity" class="nav-link-button text-base text-slate-500 hover:text-blue-600">Accounting Complexity</a></li>
+                                     <li><a href="#" data-page="firmBenchmarking" class="nav-link-button text-base text-slate-500 hover:text-blue-600">Firm Benchmarking</a></li>
+                                </ul>
+                            </div>
+                             <div>
+                                 <h3 class="text-sm font-semibold text-slate-900 tracking-wider uppercase">Company</h3>
+                                <ul role="list" class="mt-4 space-y-4">
+                                     <li><a href="#" data-page="about" class="nav-link-button text-base text-slate-500 hover:text-blue-600">About</a></li>
+                                     <li><a href="#" data-page="contact" class="nav-link-button text-base text-slate-500 hover:text-blue-600">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="mt-8 border-t border-slate-200 pt-8 text-center">
@@ -425,12 +452,17 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-link, .nav-link-mobile, .nav-link-button, .scroll-link, header a');
+            const navLinks = document.querySelectorAll('.nav-link, .nav-link-mobile, .nav-link-button, .scroll-link, header a, footer a');
             const pages = document.querySelectorAll('.page-content-item');
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
 
             function showPage(pageId) {
+                // If no pageId is provided, default to home
+                if (!pageId) {
+                    pageId = 'home';
+                }
+
                 pages.forEach(page => {
                     if (page.id === pageId) {
                         page.classList.add('active');
@@ -451,6 +483,9 @@
                     document.title = activePage.dataset.title || 'Analytext';
                     document.querySelector('meta[name="description"]').setAttribute("content", activePage.dataset.description || '');
                 }
+
+                // Scroll to the top of the document
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 
             navLinks.forEach(link => {
@@ -459,7 +494,12 @@
                     if (pageId) {
                        e.preventDefault();
                        showPage(pageId);
-                       window.scrollTo(0,0);
+                    } else if (link.getAttribute('href') === '#features-section') {
+                        // Handle internal anchor link scrolling
+                        e.preventDefault();
+                        document.querySelector('#features-section').scrollIntoView({
+                            behavior: 'smooth'
+                        });
                     }
                 });
             });
@@ -470,23 +510,9 @@
                     mobileMenu.classList.toggle('hidden');
                 });
             }
-
-            const contactForm = document.getElementById('contact-form');
-            if(contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const submissionMessage = document.getElementById('form-submission-message');
-                    submissionMessage.style.display = 'block';
-                    submissionMessage.style.opacity = '1';
-                    contactForm.reset();
-                    setTimeout(() => {
-                        submissionMessage.style.opacity = '0';
-                        setTimeout(() => {
-                             submissionMessage.style.display = 'none';
-                        }, 500);
-                    }, 4000);
-                });
-            }
+            
+            // Show the initial page
+            showPage('home');
         });
     </script>
 
