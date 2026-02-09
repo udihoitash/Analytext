@@ -62,6 +62,7 @@
         }
         .page-content-item.active {
             display: block;
+            opacity: 0;
             animation: fadeInUp 0.8s ease-out forwards;
         }
         @keyframes fadeInUp {
@@ -77,9 +78,20 @@
         .hero-bg {
             background-image: linear-gradient(45deg, #1e3a8a 0%, #172554 100%);
         }
-        #form-submission-message {
-            display: none;
-            transition: opacity 0.5s ease-in-out;
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
         }
     </style>
 </head>
@@ -100,6 +112,7 @@
                 <a href="#" class="nav-link text-slate-600 hover:text-blue-600" data-page="financialNotes">Notes Data</a>
                 <a href="#" class="nav-link text-slate-600 hover:text-blue-600" data-page="accountingComplexity">Accounting Complexity</a>
                 <a href="#" class="nav-link text-slate-600 hover:text-blue-600" data-page="firmBenchmarking">Firm Benchmarking</a>
+                <a href="#" class="nav-link text-slate-600 hover:text-blue-600" data-page="apps">Apps</a>
                 <a href="#" class="nav-link text-slate-600 hover:text-blue-600" data-page="about">About</a>
                 <a href="#" class="nav-link text-slate-600 hover:text-blue-600" data-page="contact">Contact</a>
             </nav>
@@ -117,6 +130,7 @@
             <a href="#" class="block nav-link-mobile text-slate-600 hover:text-blue-600 hover:bg-slate-50 py-2 px-4" data-page="financialNotes">Notes Data</a>
             <a href="#" class="block nav-link-mobile text-slate-600 hover:text-blue-600 hover:bg-slate-50 py-2 px-4" data-page="accountingComplexity">Accounting Complexity</a>
             <a href="#" class="block nav-link-mobile text-slate-600 hover:text-blue-600 hover:bg-slate-50 py-2 px-4" data-page="firmBenchmarking">Firm Benchmarking</a>
+            <a href="#" class="block nav-link-mobile text-slate-600 hover:text-blue-600 hover:bg-slate-50 py-2 px-4" data-page="apps">Apps</a>
             <a href="#" class="block nav-link-mobile text-slate-600 hover:text-blue-600 hover:bg-slate-50 py-2 px-4" data-page="about">About</a>
             <a href="#" class="block nav-link-mobile text-slate-600 hover:text-blue-600 hover:bg-slate-50 py-2 px-4" data-page="contact">Contact</a>
         </div>
@@ -137,9 +151,12 @@
                                  Textual Financial Data Repository for Machine Learning, AI, and Textual Analyses: Major Sections from 10-K, 10-Q, and Financial Statement Notes Extracted Using Shared Python Code
                              </a>
                          </p>
-                          <div class="mt-10 flex justify-center gap-x-6">
-                             <a href="#" data-page="secFilings" class="nav-link-button rounded-md bg-white px-4 py-3 text-base font-semibold text-blue-600 shadow-sm hover:bg-blue-50">Get Data</a>
-                             <a href="#features-section" class="scroll-link rounded-md px-4 py-3 text-base font-semibold text-white hover:bg-white/10">Learn More &rarr;</a>
+                          <div class="mt-10 flex flex-col items-center gap-y-4">
+                             <div class="flex justify-center gap-x-6">
+                                <a href="#" data-page="secFilings" class="nav-link-button rounded-md bg-white px-4 py-3 text-base font-semibold text-blue-600 shadow-sm hover:bg-blue-50">Get Data</a>
+                                <a href="#features-section" class="scroll-link rounded-md px-4 py-3 text-base font-semibold text-white hover:bg-white/10">Learn More &rarr;</a>
+                             </div>
+                             <a href="#" data-page="contact" class="text-blue-200 hover:text-white text-lg md:text-xl font-medium underline transition duration-200">Register to receive updates on additional data and apps</a>
                          </div>
                     </div>
                 </section>
@@ -323,6 +340,56 @@
                 </div>
             </div>
 
+            <!-- Apps Page -->
+            <div id="apps" class="page-content-item" data-title="Interactive Financial Apps & Tools | Analytext" data-description="Explore interactive tools and applications designed to simplify financial textual analysis. Use our parsed data directly in your browser.">
+                <h1 class="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">Interactive Financial Apps</h1>
+                <p class="text-lg text-slate-600 mb-10 max-w-4xl">Leverage our pre-parsed datasets through interactive applications designed to help you explore and visualize financial textual data directly.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                    <div class="feature-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                        <div class="h-48 bg-blue-600 flex items-center justify-center text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
+                        </div>
+                        <div class="p-8 flex-grow">
+                            <h2 class="text-2xl font-bold text-slate-900 mb-3">
+                                <a href="https://www.dropbox.com/scl/fi/fuxmlc53ysu52es5do6yp/Analytext.zip?rlkey=2ock6tqdtgpwudehkswms4h70&dl=0" class="hover:text-blue-600 transition-colors">Word Frequency Analyzer</a>
+                            </h2>
+                            <p class="text-slate-600">Use our App to calculate word frequencies (bag of words), based on your own word dictionary, the text files you chose (e.g., from our website), and output your results into an Excel file.</p>
+                            <p class="mt-4">
+                                <a href="Analytext.mp4" class="text-blue-600 hover:underline font-medium">Click to watch an illustrative video</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                        <div class="h-48 bg-green-600 flex items-center justify-center text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
+                        <div class="p-8 flex-grow">
+                            <h2 class="text-2xl font-bold text-slate-900 mb-3">Topic Discovery Tool</h2>
+                            <p class="text-slate-600 mb-6">Use our App to perform LDA Analysis</p>
+                            <span class="inline-block bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">Under Development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Tutorial Section -->
+                <div class="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">App Tutorial & Demonstration</h2>
+                    <p class="text-slate-600 mb-8">Watch a brief demonstration on how to use our Word Frequency Analyzer to process SEC filings and generate research-ready output.</p>
+                    <div class="video-container">
+                        <video controls playsinline preload="metadata" poster="https://placehold.co/1280x720/1e3a8a/white?text=Word+Frequency+Analyzer+Demo">
+                            <source src="Analytext.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+
             <!-- About Page -->
             <div id="about" class="page-content-item" data-title="About the Researchers | Analytext" data-description="Meet the team behind Analytext: Mauricio Codesso (Northeastern University), Rani Hoitash (Bentley University), and Udi Hoitash (Northeastern University), experts in finance, accounting, and data science.">
                 <h1 class="text-4xl font-extrabold text-slate-900 mb-4 text-center tracking-tight">About the Authors</h1>
@@ -352,12 +419,12 @@
             
             <!-- Contact Page -->
             <div id="contact" class="page-content-item" data-title="Contact the Analytext Team" data-description="Get in touch with the Analytext researchers. We welcome questions, feedback, and collaboration inquiries. Contact us via the form or directly via email.">
-                <h1 class="text-4xl font-extrabold text-slate-900 mb-4 text-center tracking-tight">Get in Touch</h1>
-                <p class="text-lg text-slate-600 mb-16 max-w-3xl mx-auto text-center">Have questions or feedback? We'd love to hear from you. Reach out to the authors directly or use the contact form for general inquiries.</p>
+                <h1 class="text-4xl font-extrabold text-slate-900 mb-4 text-center tracking-tight">Get in Touch and Register for Updates</h1>
+                <p class="text-lg text-slate-600 mb-16 max-w-3xl mx-auto text-center">Want future updates? Have questions or feedback? We'd love to hear from you. Reach out to the authors directly or use the contact form to register.</p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
                     <div class="bg-slate-100 p-8 rounded-xl shadow-lg">
-                        <h2 class="text-2xl font-bold text-slate-900 mb-6">Send us a Message</h2>
+                        <h2 class="text-2xl font-bold text-slate-900 mb-6">Register to receive updates about future data and apps</h2>
                         <form action="https://formspree.io/f/mjkopdpq" method="POST">
                             <div class="space-y-6">
                                 <div>
@@ -435,6 +502,7 @@
                                 <ul role="list" class="mt-4 space-y-4">
                                     <li><a href="#" data-page="home" class="nav-link-button text-base text-slate-500 hover:text-blue-600">Home</a></li>
                                     <li><a href="#" data-page="secFilings" class="nav-link-button text-base text-slate-500 hover:text-blue-600">SEC Data</a></li>
+                                    <li><a href="#" data-page="apps" class="nav-link-button text-base text-slate-500 hover:text-blue-600">Apps</a></li>
                                 </ul>
                             </div>
                             <div>
@@ -464,13 +532,12 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-link, .nav-link-mobile, .nav-link-button, .scroll-link, header a, footer a');
+            const navLinks = document.querySelectorAll('.nav-link, .nav-link-mobile, .nav-link-button, .scroll-link, header a, footer a, main a');
             const pages = document.querySelectorAll('.page-content-item');
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
 
             function showPage(pageId) {
-                // If no pageId is provided, default to home
                 if (!pageId) {
                     pageId = 'home';
                 }
@@ -489,14 +556,12 @@
 
                 if(mobileMenu) mobileMenu.classList.add('hidden');
                 
-                // Update title and meta description for SEO
                 const activePage = document.querySelector('.page-content-item.active');
                 if (activePage) {
                     document.title = activePage.dataset.title || 'Analytext';
                     document.querySelector('meta[name="description"]').setAttribute("content", activePage.dataset.description || '');
                 }
 
-                // Scroll to the top of the document
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 
@@ -507,7 +572,6 @@
                        e.preventDefault();
                        showPage(pageId);
                     } else if (link.getAttribute('href') === '#features-section') {
-                        // Handle internal anchor link scrolling
                         e.preventDefault();
                         document.querySelector('#features-section').scrollIntoView({
                             behavior: 'smooth'
@@ -523,9 +587,28 @@
                 });
             }
             
-            // Show the initial page
             showPage('home');
         });
+    </script>
+
+    <!-- GA4 Link Tracking Script -->
+    <script>
+    document.addEventListener('click', function(event) {
+        const link = event.target.closest('a');
+        if (link) {
+            const linkText = link.innerText || link.textContent;
+            const linkUrl = link.getAttribute('href');
+            const pageId = link.dataset.page;
+
+            if (typeof gtag === 'function') {
+                gtag('event', 'link_click', {
+                    'link_text': linkText.trim(),
+                    'link_url': linkUrl,
+                    'destination_page': pageId || 'external'
+                });
+            }
+        }
+    });
     </script>
 
 </body>
