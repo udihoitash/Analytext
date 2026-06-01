@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsubscribe — Analytext</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col">
+
+    <!-- Nav (matches analytext.com) -->
+    <header class="bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center">
+            <a href="https://www.analytext.com" class="flex items-center space-x-3">
+                <div class="h-9 w-9 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">A</div>
+                <span class="text-xl font-bold text-slate-800">Analytext</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <main class="flex-1 flex items-center justify-center px-4 py-16">
+        <div class="max-w-md w-full">
+
+            <!-- Processing -->
+            <div id="state-processing" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-10 text-center">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-5">
+                    <svg class="animate-spin h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold text-slate-900">Processing…</h1>
+            </div>
+
+            <!-- Success -->
+            <div id="state-success" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-10 text-center">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-5">
+                    <svg class="h-8 w-8 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold text-slate-900 mb-3">You've been unsubscribed</h1>
+                <p class="text-slate-500 mb-1">
+                    <span id="email-display" class="font-semibold text-slate-700"></span>
+                    has been removed from our mailing list.
+                </p>
+                <p class="text-slate-400 text-sm mt-4">You will not receive any further emails from us.</p>
+            </div>
+
+            <!-- Error -->
+            <div id="state-error" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-10 text-center">
+                <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-5">
+                    <svg class="h-8 w-8 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold text-slate-900 mb-3">Something went wrong</h1>
+                <p class="text-slate-500">We could not process your request. Please try again or
+                    <a href="https://www.analytext.com/#contact" class="text-blue-600 hover:underline">contact us directly</a>.
+                </p>
+            </div>
+
+            <!-- Invalid link -->
+            <div id="state-invalid" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-10 text-center">
+                <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-5">
+                    <svg class="h-8 w-8 text-amber-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold text-slate-900 mb-3">Invalid link</h1>
+                <p class="text-slate-500">This unsubscribe link is invalid or has already been used.</p>
+            </div>
+
+            <p class="text-center mt-6">
+                <a href="https://www.analytext.com" class="text-sm text-slate-400 hover:text-blue-600 transition-colors">← Back to Analytext</a>
+            </p>
+        </div>
+    </main>
+
+    <script>
+        const FORMSPREE_ID = 'mjkopdpq';
+
+        function showState(id) {
+            ['processing', 'success', 'error', 'invalid'].forEach(function(s) {
+                document.getElementById('state-' + s).classList.add('hidden');
+            });
+            document.getElementById('state-' + id).classList.remove('hidden');
+        }
+
+        function decodeBase64Url(str) {
+            // Reverse of Python's urlsafe_b64encode with stripped padding
+            str = str.replace(/-/g, '+').replace(/_/g, '/');
+            while (str.length % 4) str += '=';
+            try { return atob(str); } catch(e) { return null; }
+        }
+
+        async function run() {
+            var params = new URLSearchParams(window.location.search);
+            var token  = params.get('e');
+
+            if (!token) { showState('invalid'); return; }
+
+            var email = decodeBase64Url(token);
+            if (!email || email.indexOf('@') === -1) { showState('invalid'); return; }
+
+            document.getElementById('email-display').textContent = email;
+
+            try {
+                var res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        _subject: 'UNSUBSCRIBE: ' + email,
+                        email:    email,
+                        message:  'Web unsubscribe request'
+                    })
+                });
+                showState(res.ok ? 'success' : 'error');
+            } catch(e) {
+                showState('error');
+            }
+        }
+
+        run();
+    </script>
+</body>
+</html>
