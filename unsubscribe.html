@@ -63,6 +63,7 @@
                 <p class="text-slate-500">We could not process your request. Please try again or
                     <a href="https://www.analytext.com/#contact" class="text-blue-600 hover:underline">contact us directly</a>.
                 </p>
+                <p id="error-detail" class="text-red-400 text-xs mt-3 font-mono"></p>
             </div>
 
             <!-- Invalid link -->
@@ -111,17 +112,26 @@
             document.getElementById('email-display').textContent = email;
 
             try {
+                var fd = new FormData();
+                fd.append('_subject', 'UNSUBSCRIBE: ' + email);
+                fd.append('email', email);
+                fd.append('message', 'Web unsubscribe request');
+
                 var res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify({
-                        _subject: 'UNSUBSCRIBE: ' + email,
-                        email:    email,
-                        message:  'Web unsubscribe request'
-                    })
+                    headers: { 'Accept': 'application/json' },
+                    body: fd
                 });
-                showState(res.ok ? 'success' : 'error');
+                if (res.ok) {
+                    showState('success');
+                } else {
+                    var data = await res.json().catch(function() { return {}; });
+                    document.getElementById('error-detail').textContent =
+                        'HTTP ' + res.status + ': ' + (data.error || JSON.stringify(data));
+                    showState('error');
+                }
             } catch(e) {
+                document.getElementById('error-detail').textContent = e.message || 'Network error';
                 showState('error');
             }
         }
