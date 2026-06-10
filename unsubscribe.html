@@ -103,29 +103,8 @@
         }
 
         function submitEmail(email) {
-            var enc = encodeURIComponent(email);
-            var ts  = Date.now();
-
-            // Method 1: Image GET — zero CORS restrictions, works in every browser (requires doGet in Apps Script)
-            new Image().src = APPS_SCRIPT_URL + '?email=' + enc + '&_t=' + ts;
-
-            // Method 2: sendBeacon POST — fire-and-forget, no CORS on simple POST
-            if (typeof navigator.sendBeacon === 'function') {
-                var d = new URLSearchParams();
-                d.append('email', email);
-                navigator.sendBeacon(APPS_SCRIPT_URL, d);
-            }
-
-            // Method 3: form + hidden iframe POST — last resort
-            var form = document.createElement('form');
-            form.method = 'POST';
-            form.action  = APPS_SCRIPT_URL;
-            form.target  = 'unsub_target';
-            var inp = document.createElement('input');
-            inp.type = 'hidden'; inp.name = 'email'; inp.value = email;
-            form.appendChild(inp);
-            document.body.appendChild(form);
-            form.submit();
+            // Image GET — zero CORS restrictions, works in every browser
+            new Image().src = APPS_SCRIPT_URL + '?email=' + encodeURIComponent(email) + '&_t=' + Date.now();
         }
 
         function run() {
