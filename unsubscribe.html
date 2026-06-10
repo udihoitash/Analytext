@@ -22,6 +22,9 @@
         </div>
     </header>
 
+    <!-- Hidden iframe absorbs the Apps Script response so the page doesn't navigate -->
+    <iframe name="unsub_target" style="display:none"></iframe>
+
     <!-- Content -->
     <main class="flex-1 flex items-center justify-center px-4 py-16">
         <div class="max-w-md w-full">
@@ -84,7 +87,7 @@
     </main>
 
     <script>
-        const FORMSPREE_ID = 'mjkopdpq';
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwKBwaNQFcQUvQD3FtnY4BaRp-ryf4cdI4aCXDASw8EVUN6kHiKWZrVzyAowJByter2/exec';
 
         function showState(id) {
             ['processing', 'success', 'error', 'invalid'].forEach(function(s) {
@@ -94,13 +97,38 @@
         }
 
         function decodeBase64Url(str) {
-            // Reverse of Python's urlsafe_b64encode with stripped padding
             str = str.replace(/-/g, '+').replace(/_/g, '/');
             while (str.length % 4) str += '=';
             try { return atob(str); } catch(e) { return null; }
         }
 
-        async function run() {
+        function submitEmail(email) {
+            var enc = encodeURIComponent(email);
+            var ts  = Date.now();
+
+            // Method 1: Image GET — zero CORS restrictions, works in every browser (requires doGet in Apps Script)
+            new Image().src = APPS_SCRIPT_URL + '?email=' + enc + '&_t=' + ts;
+
+            // Method 2: sendBeacon POST — fire-and-forget, no CORS on simple POST
+            if (typeof navigator.sendBeacon === 'function') {
+                var d = new URLSearchParams();
+                d.append('email', email);
+                navigator.sendBeacon(APPS_SCRIPT_URL, d);
+            }
+
+            // Method 3: form + hidden iframe POST — last resort
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action  = APPS_SCRIPT_URL;
+            form.target  = 'unsub_target';
+            var inp = document.createElement('input');
+            inp.type = 'hidden'; inp.name = 'email'; inp.value = email;
+            form.appendChild(inp);
+            document.body.appendChild(form);
+            form.submit();
+        }
+
+        function run() {
             var params = new URLSearchParams(window.location.search);
             var token  = params.get('e');
 
@@ -110,30 +138,8 @@
             if (!email || email.indexOf('@') === -1) { showState('invalid'); return; }
 
             document.getElementById('email-display').textContent = email;
-
-            try {
-                var fd = new FormData();
-                fd.append('_subject', 'UNSUBSCRIBE: ' + email);
-                fd.append('email', email);
-                fd.append('message', 'Web unsubscribe request');
-
-                var res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
-                    method: 'POST',
-                    headers: { 'Accept': 'application/json' },
-                    body: fd
-                });
-                if (res.ok) {
-                    showState('success');
-                } else {
-                    var data = await res.json().catch(function() { return {}; });
-                    document.getElementById('error-detail').textContent =
-                        'HTTP ' + res.status + ': ' + (data.error || JSON.stringify(data));
-                    showState('error');
-                }
-            } catch(e) {
-                document.getElementById('error-detail').textContent = e.message || 'Network error';
-                showState('error');
-            }
+            submitEmail(email);
+            showState('success');
         }
 
         run();
